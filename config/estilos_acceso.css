@@ -1,0 +1,252 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f2f5f1;
+    color: #293b32;
+}
+
+/* LOGIN */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 35px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px #263b2d12;
+}
+
+.logo {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background: #dfeae0;
+    color: #315b46;
+    font-size: 27px;
+}
+
+.login-card h1 {
+    margin: 0 0 10px;
+    font-size: 25px;
+}
+
+/* ENCABEZADO */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 6%;
+    background: #fff;
+    border-bottom: 1px solid #e4eae3;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: bold;
+    color: #315b46;
+}
+
+.brand span {
+    display: block;
+    margin-top: 4px;
+    color: #87948a;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.logout {
+    padding: 10px 15px;
+    border: 1px solid #dce4dc;
+    border-radius: 8px;
+    color: #315b46;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.logout:hover {
+    background: #f2f5f1;
+}
+
+/* CONTENIDO */
+
+.container {
+    width: min(1050px, 92%);
+    margin: 40px auto;
+}
+
+.welcome {
+    margin-bottom: 28px;
+}
+
+.welcome h1 {
+    margin-bottom: 8px;
+    font-size: 29px;
+}
+
+p {
+    color: #78847b;
+    line-height: 1.5;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: start;
+}
+
+.card {
+    padding: 26px;
+    background: #fff;
+    border: 1px solid #e7ece6;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #263b2d08;
+}
+
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    color: #315b46;
+}
+
+.description {
+    margin: 0 0 23px;
+    color: #879188;
+    font-size: 14px;
+}
+
+/* FORMULARIOS */
+
+label {
+    display: block;
+    margin: 17px 0 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #dce3dc;
+    border-radius: 9px;
+    outline: none;
+    font-size: 14px;
+    background: #fff;
+}
+
+input:focus {
+    border-color: #668a70;
+    box-shadow: 0 0 0 3px #668a701a;
+}
+
+button {
+    width: 100%;
+    margin-top: 23px;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: #315b46;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+button:hover {
+    background: #244634;
+}
+
+/* MENSAJES */
+
+.notice {
+    margin-bottom: 18px;
+    padding: 12px 14px;
+    border-radius: 9px;
+    font-size: 14px;
+}
+
+.success {
+    background: #e7f5e9;
+    color: #24633b;
+}
+
+.error {
+    background: #fff0ee;
+    color: #b42318;
+}
+
+/* LISTADO */
+
+.vet-list {
+    margin-top: 22px;
+}
+
+.vet-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #edf0ec;
+}
+
+.vet-item:last-child {
+    border-bottom: none;
+}
+
+.vet-name {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.vet-email {
+    color: #78847b;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.empty {
+    padding: 20px 0;
+    color: #879188;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 720px) {
+    .panel-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        margin: 25px auto;
+    }
+
+    .welcome h1 {
+        font-size: 24px;
+    }
+
+    .card {
+        padding: 21px;
+    }
+
+    .navbar {
+        padding: 18px 4%;
+    }
+}
