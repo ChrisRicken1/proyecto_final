@@ -37,10 +37,10 @@ function verify_csrf(): void {
     }
 }
 function require_vet(): void {
-    if (empty($_SESSION['vet_id'])) { header('Location: index.php'); exit; }
+    if (empty($_SESSION['vet_id'])) { header('Location: login.php?tipo=veterinaria'); exit; }
 }
 function require_client(): void {
-    if (empty($_SESSION['client_id'])) { header('Location: index.php?tipo=cliente'); exit; }
+    if (empty($_SESSION['client_id'])) { header('Location: login.php?tipo=cliente'); exit; }
 }
 function flash(string $message, string $type='ok'): void {
     $_SESSION['flash'] = ['message'=>$message, 'type'=>$type];

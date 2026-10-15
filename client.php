@@ -12,7 +12,7 @@
 
     if (!$client) {
         session_destroy();
-        header('Location: index.php?tipo=cliente');
+        header('Location: login.php?tipo=cliente');
         exit;
     }
 
