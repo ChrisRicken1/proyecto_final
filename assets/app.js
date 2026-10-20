@@ -1,17 +1,37 @@
-// Preservar scripts existentes del sistema
-document.querySelectorAll('form[data-confirm]').forEach(form => {
-    form.addEventListener('submit', event => {
-        if (!window.confirm(form.dataset.confirm || '¿Continuar?')) event.preventDefault();
-    });
+// ============================================================================
+// Funcionalidades de Formularios Médicos y Sistema (Backend)
+// ============================================================================
+document.addEventListener('change', function(e) {
+    // Alternar campos de vacunación en consultas
+    if (e.target.matches('[name="motivo"]')) {
+        const box = document.querySelector('#vacuna-fields');
+        if (box) box.hidden = (e.target.value !== 'Vacuna');
+    }
+    // Alternar campo de 'otro medicamento' en consultas
+    if (e.target.matches('[name="medicamento_id"]')) {
+        const box = document.querySelector('#otro-medicamento');
+        if (box) box.hidden = (e.target.value !== 'otro');
+    }
 });
 
+// Confirmaciones automáticas para enlaces y botones con data-confirm
+document.addEventListener('click', function(e) {
+    const el = e.target.closest('[data-confirm]');
+    if (el) {
+        if (!confirm(el.dataset.confirm || '¿Estás seguro de continuar?')) {
+            e.preventDefault();
+        }
+    }
+});
+
+// Estilo para inputs de tipo fecha
 document.querySelectorAll('input[type="date"]').forEach(input => {
     input.addEventListener('change', () => input.classList.toggle('has-value', !!input.value));
 });
 
-// ==========================================
-// Interactividad para las Páginas Públicas
-// ==========================================
+// ============================================================================
+// Interactividad para Páginas Públicas (Landing, Planes, FAQ, Contacto)
+// ============================================================================
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Menú Móvil Desplegable
     const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -22,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
         
-        // Cerrar menú al hacer clic en un enlace
         mobileDrawer.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileDrawer.classList.remove('open');
@@ -37,18 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) {
             btn.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
-                // Cerrar otros abiertos para efecto acordeón limpio
                 faqItems.forEach(other => {
                     if (other !== item) other.classList.remove('active');
                 });
-                
                 item.classList.toggle('active', !isActive);
             });
         }
     });
 
-    // 3. Toggle de Precios (Mensual / Anual con descuento)
+    // 3. Toggle de Precios (Mensual / Anual con 20% de descuento)
     const pricingSwitch = document.getElementById('pricingSwitch');
     if (pricingSwitch) {
         pricingSwitch.addEventListener('click', () => {
@@ -84,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Scroll suave para enlaces internos (#soluciones, #migracion, #faq)
+    // 5. Scroll suave para enlaces ancla internos (#soluciones, #migracion, #faq)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').substring(1);

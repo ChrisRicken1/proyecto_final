@@ -1,10 +1,8 @@
 <?php
-require __DIR__ . '/config/config.php';
+require_once __DIR__ . '/config/config.php';
 
-// Vaciamos todas las variables de sesión
 $_SESSION = [];
 
-// Si se desea destruir la sesión completamente, borramos también la cookie de sesión
 if (ini_get('session.use_cookies')) {
     $p = session_get_cookie_params();
     setcookie(
@@ -18,9 +16,15 @@ if (ini_get('session.use_cookies')) {
     );
 }
 
-// Finalmente, destruimos la sesión
 session_destroy();
 
-// Redirigimos al login
-header('Location: login.php');
+// Eliminar cookie de recuerdame
+setcookie('vet_remember', '', [
+    'expires'  => time() - 3600,
+    'path'     => '/',
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
+
+header('Location: ' . url('login.php'));
 exit;

@@ -1,4 +1,5 @@
-<?php require_once __DIR__ . '/../config/config.php'; 
+<?php 
+require_once __DIR__ . '/../config/config.php'; 
 $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
 ?>
 <!doctype html>
@@ -6,52 +7,89 @@ $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= e($pageTitle ?? 'Plataforma de Gestión Veterinaria') ?> | VetCompartido</title>
+    <title><?= e($pageTitle ?? 'Plataforma de Gestión Veterinaria') ?> | <?= APP_NAME ?></title>
     <meta name="description" content="<?= e($pageDescription ?? 'Plataforma médica veterinaria integral. Historias clínicas unificadas, gestión de stock, libreta sanitaria digital para tutores y migración asistida sin costo.') ?>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/public.css?v=5">
+    
+    <link rel="stylesheet" href="<?= url('assets/style.css') ?>?v=3">
+    <link rel="stylesheet" href="<?= url('assets/public.css') ?>?v=6">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%2232%22%20height=%2232%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23237765%22/><text x=%2250%%22 y=%2255%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22>✚</text></svg>">
 </head>
 <body class="<?= !empty($bodyClass) ? e($bodyClass) : '' ?>">
     <header class="topbar public-topbar">
         <div class="topbar-inner">
-            <a class="brand" href="index.php" title="VetCompartido - Gestión Veterinaria">
+            <?php 
+            $brandUrl = url('index.php');
+            if (!empty($_SESSION['clinic_id'])) $brandUrl = url('dashboard.php');
+            elseif (!empty($_SESSION['client_id'])) $brandUrl = url('cliente/mascotas.php');
+            elseif (!empty($_SESSION['admin_id'])) $brandUrl = url('admin/veterinarias.php');
+            ?>
+            <a class="brand" href="<?= $brandUrl ?>" title="<?= APP_NAME ?> - Gestión Veterinaria">
                 <span class="brand-icon">✚</span>
                 <div class="brand-text-group">
-                    <span class="brand-name">VetCompartido</span>
-                    <span class="brand-tagline">Gestión Clínica &amp; Tutores</span>
+                    <span class="brand-name"><?= APP_NAME ?></span>
+                    <span class="brand-tagline">
+                        <?php if (!empty($_SESSION['clinic_name'])): ?>
+                            <?= e($_SESSION['clinic_name']) ?>
+                        <?php elseif (!empty($_SESSION['admin_id'])): ?>
+                            Panel Administrador
+                        <?php elseif (!empty($_SESSION['client_id'])): ?>
+                            Portal Tutores
+                        <?php else: ?>
+                            Gestión Clínica &amp; Tutores
+                        <?php endif; ?>
+                    </span>
                 </div>
             </a>
 
             <!-- Navegación de Escritorio -->
             <nav class="desktop-nav">
-                <?php if (!empty($_SESSION['vet_id'])): ?>
-                    <a href="vet.php" class="<?= $currentScript === 'vet.php' ? 'active-nav' : '' ?>">Panel veterinaria</a>
-                    <a href="stock.php" class="<?= $currentScript === 'stock.php' ? 'active-nav' : '' ?>">Stock</a>
+                <?php if (!empty($_SESSION['clinic_id'])): ?>
+                    <!-- Menú Veterinarias -->
+                    <a href="<?= url('dashboard.php') ?>" class="<?= $currentScript === 'dashboard.php' ? 'active-nav' : '' ?>">Inicio</a>
+                    <a href="<?= url('clientes/buscar.php') ?>" class="<?= $currentScript === 'buscar.php' ? 'active-nav' : '' ?>">Buscar cliente</a>
+                    <a href="<?= url('clientes/nuevo.php') ?>" class="<?= $currentScript === 'nuevo.php' ? 'active-nav' : '' ?>">+ Nuevo cliente</a>
+                    <a href="<?= url('historial/recientes.php') ?>" class="<?= $currentScript === 'recientes.php' ? 'active-nav' : '' ?>">Recientes</a>
+                    <a href="<?= url('turnos/index.php') ?>" class="<?= $currentScript === 'index.php' && strpos($_SERVER['SCRIPT_NAME'] ?? '', '/turnos/') !== false ? 'active-nav' : '' ?>">Turnos</a>
+                    <a href="<?= url('stock/index.php') ?>" class="<?= $currentScript === 'index.php' && strpos($_SERVER['SCRIPT_NAME'] ?? '', '/stock/') !== false ? 'active-nav' : '' ?>">Stock</a>
                     <span class="nav-divider"></span>
-                    <a href="logout.php" class="btn-nav-outline">Cerrar sesión</a>
+                    <span style="font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 4px;">
+                        👨‍⚕️ <?= e($_SESSION['vet_username'] ?? '') ?>
+                    </span>
+                    <a href="<?= url('logout.php') ?>" class="btn-nav-outline">Cerrar sesión</a>
+
                 <?php elseif (!empty($_SESSION['client_id'])): ?>
-                    <a href="client.php" class="<?= $currentScript === 'client.php' ? 'active-nav' : '' ?>">Mis mascotas</a>
+                    <!-- Menú Clientes / Dueños de Mascotas -->
+                    <a href="<?= url('cliente/mascotas.php') ?>" class="<?= $currentScript === 'mascotas.php' ? 'active-nav' : '' ?>">Mis mascotas</a>
+                    <a href="<?= url('cliente/turnos.php') ?>" class="<?= $currentScript === 'turnos.php' ? 'active-nav' : '' ?>">Turnos</a>
                     <span class="nav-divider"></span>
-                    <a href="logout.php" class="btn-nav-outline">Cerrar sesión</a>
+                    <a href="<?= url('cliente/logout.php') ?>" class="btn-nav-outline">Cerrar sesión</a>
+
+                <?php elseif (!empty($_SESSION['admin_id'])): ?>
+                    <!-- Menú Superadministrador -->
+                    <a href="<?= url('admin/veterinarias.php') ?>" class="<?= $currentScript === 'veterinarias.php' ? 'active-nav' : '' ?>">Veterinarias</a>
+                    <span class="nav-divider"></span>
+                    <a href="<?= url('admin/logout.php') ?>" class="btn-nav-outline">Cerrar sesión</a>
+
                 <?php else: ?>
-                    <a href="index.php" class="<?= $currentScript === 'index.php' ? 'active-nav' : '' ?>">Inicio</a>
-                    <a href="index.php#soluciones">Soluciones</a>
-                    <a href="index.php#migracion" class="nav-link-badge">
+                    <!-- Menú Público (Visitantes) -->
+                    <a href="<?= url('index.php') ?>" class="<?= $currentScript === 'index.php' ? 'active-nav' : '' ?>">Inicio</a>
+                    <a href="<?= url('index.php#soluciones') ?>">Soluciones</a>
+                    <a href="<?= url('index.php#migracion') ?>" class="nav-link-badge">
                         Migración asistida <span class="badge-pill-micro">Gratis</span>
                     </a>
-                    <a href="planes.php" class="<?= $currentScript === 'planes.php' ? 'active-nav' : '' ?>">Planes</a>
-                    <a href="nosotros.php" class="<?= $currentScript === 'nosotros.php' ? 'active-nav' : '' ?>">Quiénes somos</a>
-                    <a href="contacto.php" class="<?= $currentScript === 'contacto.php' ? 'active-nav' : '' ?>">Contacto</a>
+                    <a href="<?= url('planes.php') ?>" class="<?= $currentScript === 'planes.php' ? 'active-nav' : '' ?>">Planes</a>
+                    <a href="<?= url('nosotros.php') ?>" class="<?= $currentScript === 'nosotros.php' ? 'active-nav' : '' ?>">Quiénes somos</a>
+                    <a href="<?= url('contacto.php') ?>" class="<?= $currentScript === 'contacto.php' ? 'active-nav' : '' ?>">Contacto</a>
                     
                     <div class="nav-actions">
-                        <a href="login.php" class="btn-nav-login">
+                        <a href="<?= url('login.php') ?>" class="btn-nav-login">
                             <span class="login-dot"></span> Iniciar sesión
                         </a>
-                        <a href="planes.php" class="btn-nav-cta">Comenzar gratis</a>
+                        <a href="<?= url('planes.php') ?>" class="btn-nav-cta">Comenzar gratis</a>
                     </div>
                 <?php endif; ?>
             </nav>
@@ -67,24 +105,39 @@ $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
         <!-- Menú Móvil Desplegable -->
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <div class="mobile-nav-content">
-                <?php if (!empty($_SESSION['vet_id'])): ?>
-                    <a href="vet.php">🏥 Panel veterinaria</a>
-                    <a href="stock.php">📦 Gestión de Stock</a>
-                    <a href="logout.php" class="mobile-nav-logout">Cerrar sesión</a>
+                <?php if (!empty($_SESSION['clinic_id'])): ?>
+                    <div style="padding: 10px 14px; background: rgba(35, 119, 101, 0.08); border-radius: 10px; margin-bottom: 8px;">
+                        <strong>🏥 <?= e($_SESSION['clinic_name'] ?? 'Clínica') ?></strong>
+                        <div style="font-size: 12px; color: var(--muted);">Usuario: <?= e($_SESSION['vet_username'] ?? '') ?></div>
+                    </div>
+                    <a href="<?= url('dashboard.php') ?>">📊 Panel principal</a>
+                    <a href="<?= url('clientes/buscar.php') ?>">🔍 Buscar cliente</a>
+                    <a href="<?= url('clientes/nuevo.php') ?>">➕ Nuevo cliente</a>
+                    <a href="<?= url('historial/recientes.php') ?>">🕒 Consultas recientes</a>
+                    <a href="<?= url('turnos/index.php') ?>">📅 Gestión de turnos</a>
+                    <a href="<?= url('stock/index.php') ?>">📦 Control de stock</a>
+                    <a href="<?= url('logout.php') ?>" class="mobile-nav-logout">Cerrar sesión</a>
+
                 <?php elseif (!empty($_SESSION['client_id'])): ?>
-                    <a href="client.php">🐾 Mis mascotas</a>
-                    <a href="logout.php" class="mobile-nav-logout">Cerrar sesión</a>
+                    <a href="<?= url('cliente/mascotas.php') ?>">🐾 Mis mascotas</a>
+                    <a href="<?= url('cliente/turnos.php') ?>">📅 Mis turnos</a>
+                    <a href="<?= url('cliente/logout.php') ?>" class="mobile-nav-logout">Cerrar sesión</a>
+
+                <?php elseif (!empty($_SESSION['admin_id'])): ?>
+                    <a href="<?= url('admin/veterinarias.php') ?>">🏢 Gestión de veterinarias</a>
+                    <a href="<?= url('admin/logout.php') ?>" class="mobile-nav-logout">Cerrar sesión</a>
+
                 <?php else: ?>
-                    <a href="index.php" class="<?= $currentScript === 'index.php' ? 'active' : '' ?>">🏠 Inicio</a>
-                    <a href="index.php#soluciones">✨ Soluciones clínicas</a>
-                    <a href="index.php#migracion" class="mobile-highlight">🚀 Migración asistida sin costo</a>
-                    <a href="planes.php" class="<?= $currentScript === 'planes.php' ? 'active' : '' ?>">💳 Planes y Precios</a>
-                    <a href="nosotros.php" class="<?= $currentScript === 'nosotros.php' ? 'active' : '' ?>">👥 Quiénes somos</a>
-                    <a href="contacto.php" class="<?= $currentScript === 'contacto.php' ? 'active' : '' ?>">✉️ Contacto y Soporte</a>
-                    <a href="terminos.php" class="<?= $currentScript === 'terminos.php' ? 'active' : '' ?>">📄 Términos para veterinarias</a>
+                    <a href="<?= url('index.php') ?>" class="<?= $currentScript === 'index.php' ? 'active' : '' ?>">🏠 Inicio</a>
+                    <a href="<?= url('index.php#soluciones') ?>">✨ Soluciones clínicas</a>
+                    <a href="<?= url('index.php#migracion') ?>" class="mobile-highlight">🚀 Migración asistida sin costo</a>
+                    <a href="<?= url('planes.php') ?>" class="<?= $currentScript === 'planes.php' ? 'active' : '' ?>">💳 Planes y Precios</a>
+                    <a href="<?= url('nosotros.php') ?>" class="<?= $currentScript === 'nosotros.php' ? 'active' : '' ?>">👥 Quiénes somos</a>
+                    <a href="<?= url('contacto.php') ?>" class="<?= $currentScript === 'contacto.php' ? 'active' : '' ?>">✉️ Contacto y Soporte</a>
+                    <a href="<?= url('terminos.php') ?>" class="<?= $currentScript === 'terminos.php' ? 'active' : '' ?>">📄 Términos para veterinarias</a>
                     <div class="mobile-nav-buttons">
-                        <a href="login.php" class="btn-mobile-login">Iniciar sesión</a>
-                        <a href="planes.php" class="btn-mobile-primary">Comenzar prueba gratis</a>
+                        <a href="<?= url('login.php') ?>" class="btn-mobile-login">Iniciar sesión</a>
+                        <a href="<?= url('planes.php') ?>" class="btn-mobile-primary">Comenzar prueba gratis</a>
                     </div>
                 <?php endif; ?>
             </div>

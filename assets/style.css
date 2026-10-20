@@ -1170,4 +1170,132 @@ textarea {
     .auth-header h2 {
         font-size: 22px;
     }
-}
+}
+
+/* ============================================================================
+   Componentes del Sistema de Gestión y Paneles Médicos
+   ============================================================================ */
+.panel,
+form.panel,
+.card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 4px 18px rgba(24, 59, 53, 0.05);
+    margin-bottom: 22px;
+}
+
+.card h2,
+.panel h1,
+.panel h2 {
+    color: var(--ink);
+    margin-top: 0;
+}
+
+.hero {
+    padding: 28px;
+    border-radius: 20px;
+    background: linear-gradient(120deg, #e1f5ed, #f2f8ff);
+    margin-bottom: 24px;
+    border: 1px solid var(--line);
+}
+
+.hero h1 {
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px 18px;
+    margin-bottom: 16px;
+}
+
+/* Tablas Clínicas */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    margin: 14px 0 20px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+th {
+    background: #f1f6f3;
+    color: var(--ink);
+    font-weight: 700;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #fbfdfc;
+}
+
+/* Botones de acción complementarios */
+.btn.secondary {
+    background: #eaf5ef;
+    color: var(--green-dark);
+    border: 1px solid #d4e7dc;
+}
+
+.btn.secondary:hover {
+    background: #dbeef3;
+}
+
+.btn.danger {
+    background: var(--red);
+    color: #fff;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    align-items: center;
+}
+
+.pill {
+    display: inline-block;
+    background: #eaf5ef;
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.pet-photo {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    display: block;
+    margin: 0 0 14px;
+}
+

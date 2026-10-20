@@ -105,8 +105,8 @@
                 Comunicate con nuestro equipo para una demostración guiada o para evaluar la migración de tus pacientes actuales sin ningún costo.
             </p>
             <div class="final-cta-buttons">
-                <a href="contacto.php" class="btn-hero-primary">Contactar a nuestro equipo →</a>
-                <a href="planes.php" class="btn-hero-secondary">Ver planes y precios</a>
+                <a href="<?= url('contacto.php') ?>" class="btn-hero-primary">Contactar a nuestro equipo →</a>
+                <a href="<?= url('planes.php') ?>" class="btn-hero-secondary">Ver planes y precios</a>
             </div>
         </div>
     </div>
