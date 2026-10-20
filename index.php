@@ -113,52 +113,13 @@
                         <span class="timeline-badge">Interconsulta</span>
                     </div>
                 </div>
-
-                <!-- Tarjeta Flotante: Migración Exitosa en Tiempo Real -->
-                <div class="mockup-floating-pill">
-                    <div class="floating-icon">🚀</div>
-                    <div>
-                        <h4 class="floating-title">+120 Fichas migradas hoy</h4>
-                        <p class="floating-desc">Base de datos de Clínica Santa Fe lista en 24h</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- =========================================================================
-     2. METRICS & PRUEBA SOCIAL
-     ========================================================================= -->
-<section class="stats-strip-section">
-    <div class="public-container">
-        <div class="stats-grid-4">
-            <div class="stat-item-box">
-                <span class="stat-num">+85.000</span>
-                <h4 class="stat-title">Historias Clínicas</h4>
-                <p class="stat-caption">Centralizadas de forma digital y segura</p>
-            </div>
-            <div class="stat-item-box">
-                <span class="stat-num">+380</span>
-                <h4 class="stat-title">Veterinarias Conectadas</h4>
-                <p class="stat-caption">Consultorios, clínicas y hospitales 24h</p>
-            </div>
-            <div class="stat-item-box">
-                <span class="stat-num">40%</span>
-                <h4 class="stat-title">Ahorro de Tiempo</h4>
-                <p class="stat-caption">Menos carga administrativa por cada turno</p>
-            </div>
-            <div class="stat-item-box">
-                <span class="stat-num">99.9%</span>
-                <h4 class="stat-title">Disponibilidad en Nube</h4>
-                <p class="stat-caption">Tus fichas accesibles desde cualquier lugar</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- =========================================================================
-     3. QUÉ HACEMOS / QUÉ OFRECEMOS (DUAL TARGET: CLÍNICAS + TUTORES)
+     2. QUÉ HACEMOS / QUÉ OFRECEMOS (DUAL TARGET: CLÍNICAS + TUTORES)
      ========================================================================= -->
 <section class="section-padding bg-paper" id="soluciones">
     <div class="public-container">
@@ -328,151 +289,32 @@
 </section>
 
 <!-- =========================================================================
-     5. PLANES DE SERVICIO (PRICING PREVIEW)
+     4. CARTEL / ACCESO A PLANES DE SERVICIO
      ========================================================================= -->
-<section class="section-padding bg-white" id="precios">
+<section class="section-padding-sm bg-white" id="planes">
     <div class="public-container">
-        <div class="section-header-center">
-            <span class="section-eyebrow">Tarifas Transparentes</span>
-            <h2 class="section-title">Planes pensados para cada etapa de tu veterinaria</h2>
-            <p class="section-desc">
-                Sin contratos forzados ni cargos ocultos. Elegí la opción que mejor se adapte a tu volumen de pacientes y escalá cuando lo necesites.
-            </p>
-        </div>
-
-        <!-- Selector Mensual / Anual -->
-        <div class="pricing-toggle-wrap">
-            <span class="toggle-label" onclick="document.getElementById('pricingSwitch').click()">Facturación Mensual</span>
-            <div class="toggle-switch-ui active" id="pricingSwitch" title="Alternar facturación mensual/anual">
-                <span class="toggle-knob"></span>
-            </div>
-            <span class="toggle-label" onclick="document.getElementById('pricingSwitch').click()">
-                Facturación Anual <span class="badge-discount-save">Ahorrá 20%</span>
-            </span>
-        </div>
-
-        <div class="pricing-cards-grid">
-            <!-- Plan 1: Consultorio / Básico -->
-            <div class="pricing-card">
-                <h3 class="pricing-tier-name">Plan Básico</h3>
-                <p class="pricing-tier-desc">Ideal para profesionales independientes y consultorios en crecimiento.</p>
-                
-                <div class="pricing-price-wrap">
-                    <span class="price-currency">$</span>
-                    <span class="price-amount" data-monthly="18.500" data-annual="14.800">14.800</span>
-                    <span class="price-period">/mes (facturado anual)</span>
+        <div class="plans-teaser-card">
+            <div class="plans-teaser-grid">
+                <div class="plans-teaser-info">
+                    <span class="section-eyebrow" style="margin-bottom: 12px;">Tarifas y Modelos de Servicio</span>
+                    <h2 class="plans-teaser-title">Planes pensados para consultorios, clínicas y hospitales</h2>
+                    <p class="plans-teaser-desc">
+                        Opciones flexibles adaptadas al tamaño de tu equipo y volumen de atención. Accedé a la comparativa completa de características, gestión de stock y beneficios de cada modalidad.
+                    </p>
+                    <div class="plans-teaser-highlights">
+                        <span class="teaser-item"><span class="check-green">✓</span> Sin contratos forzados</span>
+                        <span class="teaser-item"><span class="check-green">✓</span> Prueba gratis de 14 días</span>
+                        <span class="teaser-item"><span class="check-green">✓</span> Migración asistida incluida</span>
+                    </div>
                 </div>
-
-                <ul class="pricing-features-list">
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Hasta 500 pacientes activos</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Historias clínicas digitales completas</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Acceso para 2 usuarios (Médico + Asistente)</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Portal web para tutores de mascotas</span>
-                    </li>
-                    <li class="pricing-feature-item highlight-feature">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Migración asistida de datos incluida</span>
-                    </li>
-                </ul>
-
-                <a href="contacto.php?plan=basico" class="btn-pricing-cta">Elegir Plan Básico</a>
-            </div>
-
-            <!-- Plan 2: Clínicas Pro (Destacado) -->
-            <div class="pricing-card featured">
-                <div class="featured-top-ribbon">⭐ Más Elegido por Clínicas</div>
-                <h3 class="pricing-tier-name">Plan Clínicas</h3>
-                <p class="pricing-tier-desc">Para centros veterinarios con quirófano, internación y equipo médico multidisciplinario.</p>
-                
-                <div class="pricing-price-wrap">
-                    <span class="price-currency">$</span>
-                    <span class="price-amount" data-monthly="34.000" data-annual="27.200">27.200</span>
-                    <span class="price-period">/mes (facturado anual)</span>
+                <div class="plans-teaser-cta-box">
+                    <a href="planes.php" class="btn-hero-primary btn-teaser-action">
+                        <span>Ver Planes y Precios</span>
+                        <span>→</span>
+                    </a>
+                    <span class="teaser-note">Comparativa detallada de funciones y servicios</span>
                 </div>
-
-                <ul class="pricing-features-list">
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span><strong>Pacientes e historias ilimitadas</strong></span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span><strong>Módulo avanzado de Stock y Medicamentos</strong></span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Hasta 8 usuarios concurrentes con roles</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Recordatorios automáticos de vacunación</span>
-                    </li>
-                    <li class="pricing-feature-item highlight-feature">
-                        <span class="feature-check-icon">✓</span>
-                        <span><strong>Migración prioritaria Express (&lt;24 hs)</strong></span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Soporte prioritario por WhatsApp</span>
-                    </li>
-                </ul>
-
-                <a href="contacto.php?plan=clinicas" class="btn-pricing-cta primary-cta">Probar 14 días gratis</a>
             </div>
-
-            <!-- Plan 3: Hospitales / Redes -->
-            <div class="pricing-card">
-                <h3 class="pricing-tier-name">Plan Hospitales</h3>
-                <p class="pricing-tier-desc">Para hospitales 24 horas, centros de diagnóstico y redes con múltiples sedes.</p>
-                
-                <div class="pricing-price-wrap">
-                    <span class="price-currency">$</span>
-                    <span class="price-amount" data-monthly="59.000" data-annual="47.200">47.200</span>
-                    <span class="price-period">/mes (facturado anual)</span>
-                </div>
-
-                <ul class="pricing-features-list">
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Usuarios y sucursales ilimitadas</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Auditoría médica avanzada y registro forense</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Reportes epidemiológicos y métricas clínicas</span>
-                    </li>
-                    <li class="pricing-feature-item">
-                        <span class="feature-check-icon">✓</span>
-                        <span>API de integración con equipos de laboratorio</span>
-                    </li>
-                    <li class="pricing-feature-item highlight-feature">
-                        <span class="feature-check-icon">✓</span>
-                        <span>Migración técnica personalizada y capacitación in-situ</span>
-                    </li>
-                </ul>
-
-                <a href="contacto.php?plan=hospitales" class="btn-pricing-cta">Contactar para plan a medida</a>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 35px;">
-            <a href="planes.php" style="font-size: 14px; font-weight: 700; color: var(--green); text-decoration: underline;">
-                Ver tabla comparativa detallada de características →
-            </a>
         </div>
     </div>
 </section>

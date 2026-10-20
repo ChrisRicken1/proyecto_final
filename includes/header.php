@@ -12,7 +12,7 @@ $currentScript = basename($_SERVER['PHP_SELF'] ?? '');
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/public.css">
+    <link rel="stylesheet" href="assets/public.css?v=5">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%2232%22%20height=%2232%22><rect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23237765%22/><text x=%2250%%22 y=%2255%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2220%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22bold%22>✚</text></svg>">
 </head>
 <body class="<?= !empty($bodyClass) ? e($bodyClass) : '' ?>">
